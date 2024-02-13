@@ -2,9 +2,9 @@
 
 namespace ToDoApi
 {
-    class TodoDb : DbContext
+    class TodoContext : DbContext
     {
-       public TodoDb(DbContextOptions<TodoDb> options) 
+       public TodoContext(DbContextOptions<TodoContext> options) 
             : base(options) { }
        public DbSet<Todo> Todos => Set<Todo>();
     }
