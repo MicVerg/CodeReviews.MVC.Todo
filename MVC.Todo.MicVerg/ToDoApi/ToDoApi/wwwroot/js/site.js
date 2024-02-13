@@ -2,6 +2,7 @@ const uri = 'todoitems';
 let todos = [];
 
 function getItems() {
+    debugger;
     fetch(uri)
         .then(response => response.json())
         .then(data => _displayItems(data))
