@@ -1,8 +1,6 @@
 const uri = 'todoitems';
 let todos = [];
-
 function getItems() {
-    debugger;
     fetch(uri)
         .then(response => response.json())
         .then(data => _displayItems(data))
@@ -95,16 +93,27 @@ function _displayItems(data) {
     data.forEach(item => {
         let isCompleteCheckbox = document.createElement('input');
         isCompleteCheckbox.type = 'checkbox';
+        isCompleteCheckbox.classList.add('input');
         isCompleteCheckbox.disabled = true;
         isCompleteCheckbox.checked = item.isComplete;
 
-        let editButton = button.cloneNode(false);
+        let editButton = document.createElement('button');
         editButton.innerText = 'Edit';
-        editButton.setAttribute('onclick', `displayEditForm(${item.id})`);
+        editButton.classList.add('btn', 'btn-warning', 'btn-md'); // Add Bootstrap classes to the Edit button
+        editButton.style.width = '100%';
 
-        let deleteButton = button.cloneNode(false);
+        editButton.onclick = function () {
+            displayEditForm(item.id);
+        };
+
+        let deleteButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
-        deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
+        deleteButton.classList.add('btn', 'btn-danger', 'btn-md'); // Add Bootstrap classes to the Delete button
+        deleteButton.style.width = '100%';
+
+        deleteButton.onclick = function () {
+            deleteItem(item.id);
+        };
 
         let tr = tBody.insertRow();
 
