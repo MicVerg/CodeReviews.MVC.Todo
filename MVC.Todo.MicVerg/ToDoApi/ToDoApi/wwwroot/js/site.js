@@ -93,7 +93,7 @@ function _displayItems(data) {
     data.forEach(item => {
         let isCompleteCheckbox = document.createElement('input');
         isCompleteCheckbox.type = 'checkbox';
-        isCompleteCheckbox.classList.add('input');
+        isCompleteCheckbox.classList.add('checkbox-lg');
         isCompleteCheckbox.disabled = true;
         isCompleteCheckbox.checked = item.isComplete;
 
@@ -101,6 +101,7 @@ function _displayItems(data) {
         editButton.innerText = 'Edit';
         editButton.classList.add('btn', 'btn-warning', 'btn-md'); // Add Bootstrap classes to the Edit button
         editButton.style.width = '100%';
+        editButton.style.fontWeight = 'bold';
 
         editButton.onclick = function () {
             displayEditForm(item.id);
@@ -110,6 +111,7 @@ function _displayItems(data) {
         deleteButton.innerText = 'Delete';
         deleteButton.classList.add('btn', 'btn-danger', 'btn-md'); // Add Bootstrap classes to the Delete button
         deleteButton.style.width = '100%';
+        deleteButton.style.fontWeight = 'bold';
 
         deleteButton.onclick = function () {
             deleteItem(item.id);
