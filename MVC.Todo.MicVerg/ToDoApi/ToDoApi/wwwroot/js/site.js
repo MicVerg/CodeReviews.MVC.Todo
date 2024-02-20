@@ -97,21 +97,35 @@ function _displayItems(data) {
         isCompleteCheckbox.disabled = true;
         isCompleteCheckbox.checked = item.isComplete;
 
+
         let editButton = document.createElement('button');
-        editButton.innerText = 'Edit';
-        editButton.classList.add('btn', 'btn-warning', 'btn-md'); // Add Bootstrap classes to the Edit button
+        editButton.classList.add('btn', 'btn-warning', 'btn-md');
         editButton.style.width = '100%';
         editButton.style.fontWeight = 'bold';
+
+        let icon = document.createElement('i');
+        icon.classList.add('bi', 'bi-pencil-fill');
+        editButton.appendChild(icon);
+
+        let text = document.createTextNode(' Edit');
+        editButton.appendChild(text);
 
         editButton.onclick = function () {
             displayEditForm(item.id);
         };
 
+
         let deleteButton = document.createElement('button');
-        deleteButton.innerText = 'Delete';
-        deleteButton.classList.add('btn', 'btn-danger', 'btn-md'); // Add Bootstrap classes to the Delete button
+        deleteButton.classList.add('btn', 'btn-danger', 'btn-md');
         deleteButton.style.width = '100%';
         deleteButton.style.fontWeight = 'bold';
+
+        let deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('bi', 'bi-x-circle-fill');
+        deleteButton.appendChild(deleteIcon);
+
+        let deleteText = document.createTextNode(' Delete');
+        deleteButton.appendChild(deleteText);
 
         deleteButton.onclick = function () {
             deleteItem(item.id);
